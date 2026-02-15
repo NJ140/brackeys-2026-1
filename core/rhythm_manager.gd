@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	
 	var corrected_time = t + delay - latency
 
-func get_song(song_name) -> 
+func get_song(song_name): pass
 
 func parse_logic_markers(file:Resource) -> Array[float]:
 	return []

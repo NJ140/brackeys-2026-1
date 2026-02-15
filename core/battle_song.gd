@@ -8,3 +8,5 @@ const HIT_MARKER_NAME = "HIT"
 @export var markers : Array[float] = []
 
 var song_name : StringName
+
+func parse_text()

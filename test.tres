@@ -1,7 +1,8 @@
 [gd_resource type="Resource" script_class="BattleSong" format=3 uid="uid://37y1vh6an7a7"]
 
-[ext_resource type="Script" uid="uid://c124k25pg7lqv" path="res://battle_song.gd" id="1_umafu"]
+[ext_resource type="Script" uid="uid://c124k25pg7lqv" path="res://core/battle_song.gd" id="1_umafu"]
 
 [resource]
 script = ExtResource("1_umafu")
+song_path = "uid://yahqdbly1vhk"
 metadata/_custom_type_script = "uid://c124k25pg7lqv"

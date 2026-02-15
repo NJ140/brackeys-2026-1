@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3f2gh78a2pcs"]
 
-[ext_resource type="Script" uid="uid://887y5k6poo43" path="res://rhythm_manager.gd" id="1_0wx20"]
+[ext_resource type="Script" uid="uid://887y5k6poo43" path="res://core/rhythm_manager.gd" id="1_0wx20"]
 
 [node name="RhythmManager" type="Node" unique_id=341360667]
 script = ExtResource("1_0wx20")

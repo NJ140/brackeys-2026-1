@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Brackeys 2026 1"
+run/main_scene="uid://c3vwhp8cb85v"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+UiEvent="*uid://c80tdesx77vhy"
 
 [file_customization]
 
@@ -21,7 +26,10 @@ folder_colors={
 "res://builds/": "red",
 "res://music/": "purple",
 "res://music_raw/": "purple",
-"res://tools/": "gray"
+"res://scenes/": "yellow",
+"res://scripts/": "pink",
+"res://tools/": "gray",
+"res://ui/": "blue"
 }
 
 [physics]

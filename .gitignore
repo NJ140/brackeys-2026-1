@@ -2,4 +2,4 @@
 .godot/
 /android/
 tools/
-.tmp
+*.tmp

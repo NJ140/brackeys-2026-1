@@ -1,0 +1,70 @@
+[gd_resource type="Theme" format=3 uid="uid://37htgicgqqth"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1eq05"]
+bg_color = Color(0.05882353, 0.078431375, 0.07058824, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.16862746, 0.23137255, 0.2, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_udl1o"]
+bg_color = Color(0.23921569, 1, 0.47843137, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp0j3"]
+bg_color = Color(0.078431375, 0.08627451, 0.11372549, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7176471, 0.6039216, 0.2901961, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cnyj1"]
+bg_color = Color(0.29803923, 0.7882353, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mq11"]
+bg_color = Color(0.07450981, 0.05882353, 0.101960786, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.19607843, 0.14901961, 0.24705882, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vuqvt"]
+bg_color = Color(0.63529414, 0.29803923, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+HeroBar/base_type = &"ProgressBar"
+HeroBar/constants/outline_size = 0
+HeroBar/styles/background = SubResource("StyleBoxFlat_1eq05")
+HeroBar/styles/fill = SubResource("StyleBoxFlat_udl1o")
+SongBar/base_type = &"ProgressBar"
+SongBar/styles/background = SubResource("StyleBoxFlat_bp0j3")
+SongBar/styles/fill = SubResource("StyleBoxFlat_cnyj1")
+VillainBar/base_type = &"ProgressBar"
+VillainBar/styles/background = SubResource("StyleBoxFlat_4mq11")
+VillainBar/styles/fill = SubResource("StyleBoxFlat_vuqvt")

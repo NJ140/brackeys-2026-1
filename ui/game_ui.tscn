@@ -1,0 +1,347 @@
+[gd_scene format=3 uid="uid://ca6ext88sx6rv"]
+
+[ext_resource type="Theme" uid="uid://37htgicgqqth" path="res://ui/ui_theme.tres" id="1_pylni"]
+[ext_resource type="Texture2D" uid="uid://co7v3lgn3ul1g" path="res://icon.svg" id="2_7hrjk"]
+[ext_resource type="Texture2D" uid="uid://bhpcfieyg117w" path="res://ui/Images/OIP.webp" id="2_pylni"]
+[ext_resource type="Script" uid="uid://bg37f4q7jx0f3" path="res://ui/vignette_low_hp.gd" id="2_xh48a"]
+[ext_resource type="Shader" uid="uid://gmkagrl8s1th" path="res://ui/red_vignette.gdshader" id="5_2uxy6"]
+[ext_resource type="Script" uid="uid://ck6b0ageqvbgk" path="res://ui/hp_pulse.gd" id="5_xh48a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xh48a"]
+bg_color = Color(0.13333334, 0.14509805, 0.16470589, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.22745098, 0.24705882, 0.27450982, 1)
+corner_detail = 12
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hgyfx"]
+shader = ExtResource("5_2uxy6")
+shader_parameter/strength = 0.0
+shader_parameter/edge_start = 0.8800000418
+shader_parameter/edge_end = 1.1200000532
+shader_parameter/max_strength = 0.35
+shader_parameter/curve = 2.0
+shader_parameter/pulse_amount = 0.12
+shader_parameter/pulse_speed = 3.0
+shader_parameter/vignette_color = Color(0.4896912, 0.027230995, 0.030226834, 1)
+
+[node name="GameUi" type="Control" unique_id=1497426625]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pylni")
+script = ExtResource("2_xh48a")
+hero_hp_path = NodePath("Layout/BottomBar/BottomMargin/BottomRow/LeftHUD/HeroHP")
+vignette_path = NodePath("Layout/CenterArea/Vignette")
+
+[node name="Layout" type="VBoxContainer" parent="." unique_id=1378013785]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="PanelContainer" parent="Layout" unique_id=145233584]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xh48a")
+
+[node name="TopMargin" type="MarginContainer" parent="Layout/TopBar" unique_id=1722944098]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 14
+
+[node name="TopRoot" type="Control" parent="Layout/TopBar/TopMargin" unique_id=138249945]
+layout_mode = 2
+
+[node name="TopRow" type="HBoxContainer" parent="Layout/TopBar/TopMargin/TopRoot" unique_id=1759990204]
+layout_mode = 0
+offset_right = 1226.0
+offset_bottom = 46.0
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="LeftControls" type="HBoxContainer" parent="Layout/TopBar/TopMargin/TopRoot/TopRow" unique_id=527001613]
+layout_mode = 2
+alignment = 1
+
+[node name="PauseButton" type="Button" parent="Layout/TopBar/TopMargin/TopRoot/TopRow/LeftControls" unique_id=1934003380]
+layout_mode = 2
+text = "Pause"
+
+[node name="PlayButton" type="Button" parent="Layout/TopBar/TopMargin/TopRoot/TopRow/LeftControls" unique_id=662586751]
+layout_mode = 2
+text = "Play"
+
+[node name="VSeparator" type="VSeparator" parent="Layout/TopBar/TopMargin/TopRoot/TopRow/LeftControls" unique_id=107517932]
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="Layout/TopBar/TopMargin/TopRoot/TopRow/LeftControls" unique_id=924144848]
+layout_mode = 2
+text = "Volume:"
+
+[node name="VolumeSliderWrap" type="CenterContainer" parent="Layout/TopBar/TopMargin/TopRoot/TopRow/LeftControls" unique_id=875338638]
+layout_mode = 2
+
+[node name="VolumeSlider" type="HSlider" parent="Layout/TopBar/TopMargin/TopRoot/TopRow/LeftControls/VolumeSliderWrap" unique_id=2115843661]
+custom_minimum_size = Vector2(120, 22)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 70.0
+ticks_position = 2
+
+[node name="Spacer" type="Control" parent="Layout/TopBar/TopMargin/TopRoot/TopRow" unique_id=676840623]
+layout_mode = 2
+
+[node name="CenterInfo" type="CenterContainer" parent="Layout/TopBar/TopMargin/TopRoot/TopRow" unique_id=1756891977]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightScore" type="HBoxContainer" parent="Layout/TopBar/TopMargin/TopRoot/TopRow" unique_id=932665925]
+layout_mode = 2
+alignment = 2
+
+[node name="ScoreTextLabel" type="Label" parent="Layout/TopBar/TopMargin/TopRoot/TopRow/RightScore" unique_id=1672769994]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Score:"
+
+[node name="ScoreValueLabel" type="Label" parent="Layout/TopBar/TopMargin/TopRoot/TopRow/RightScore" unique_id=651230930]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "999"
+
+[node name="CenterOverlay" type="CenterContainer" parent="Layout/TopBar/TopMargin/TopRoot" unique_id=1325627419]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SceneNameLabel" type="Label" parent="Layout/TopBar/TopMargin/TopRoot/CenterOverlay" unique_id=1910638653]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Scene Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterArea" type="Control" parent="Layout" unique_id=703995456]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GameView" type="SubViewportContainer" parent="Layout/CenterArea" unique_id=1139287445]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Layout/CenterArea/GameView" unique_id=167812500]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1280, 492)
+render_target_update_mode = 4
+
+[node name="World" type="Control" parent="Layout/CenterArea/GameView/SubViewport" unique_id=331068388]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Layout/CenterArea/GameView/SubViewport/World" unique_id=614800993]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 418.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pylni")
+stretch_mode = 4
+
+[node name="World2D" type="Node2D" parent="Layout/CenterArea/GameView/SubViewport/World" unique_id=812566633]
+
+[node name="Sprite2" type="Sprite2D" parent="Layout/CenterArea/GameView/SubViewport/World/World2D" unique_id=48663962]
+position = Vector2(0, -279.125)
+scale = Vector2(1, 1.6015625)
+texture = ExtResource("2_7hrjk")
+offset = Vector2(250, 400)
+
+[node name="Sprite2D" type="Sprite2D" parent="Layout/CenterArea/GameView/SubViewport/World/World2D" unique_id=773386388]
+position = Vector2(0, -308.125)
+scale = Vector2(1, 1.6640625)
+texture = ExtResource("2_7hrjk")
+offset = Vector2(1030, 400)
+
+[node name="BattleLayout" type="Control" parent="Layout/CenterArea/GameView/SubViewport/World" unique_id=1747917964]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BattleRow" type="HBoxContainer" parent="Layout/CenterArea/GameView/SubViewport/World/BattleLayout" unique_id=1878163739]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="LeftZone" type="Control" parent="Layout/CenterArea/GameView/SubViewport/World/BattleLayout/BattleRow" unique_id=619614730]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+
+[node name="DebugTint" type="ColorRect" parent="Layout/CenterArea/GameView/SubViewport/World/BattleLayout/BattleRow/LeftZone" unique_id=202880317]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.972549, 0.4392157, 0.27058825, 0.3019608)
+
+[node name="ArenaZone" type="Control" parent="Layout/CenterArea/GameView/SubViewport/World/BattleLayout/BattleRow" unique_id=1787107985]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DebugTint" type="ColorRect" parent="Layout/CenterArea/GameView/SubViewport/World/BattleLayout/BattleRow/ArenaZone" unique_id=1838791995]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.972549, 0.4392157, 0.27058825, 0.3137255)
+
+[node name="RightZone" type="Control" parent="Layout/CenterArea/GameView/SubViewport/World/BattleLayout/BattleRow" unique_id=620044898]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+
+[node name="DebugTint" type="ColorRect" parent="Layout/CenterArea/GameView/SubViewport/World/BattleLayout/BattleRow/RightZone" unique_id=1389632098]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.972549, 0.4392157, 0.27058825, 0.3137255)
+
+[node name="Vignette" type="ColorRect" parent="Layout/CenterArea" unique_id=387232383]
+material = SubResource("ShaderMaterial_hgyfx")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="BottomBar" type="Panel" parent="Layout" unique_id=618850143]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+theme = ExtResource("1_pylni")
+
+[node name="BottomMargin" type="MarginContainer" parent="Layout/BottomBar" unique_id=1862276877]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="BottomRow" type="HBoxContainer" parent="Layout/BottomBar/BottomMargin" unique_id=442328236]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LeftHUD" type="VBoxContainer" parent="Layout/BottomBar/BottomMargin/BottomRow" unique_id=53253538]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+
+[node name="HeroName" type="Label" parent="Layout/BottomBar/BottomMargin/BottomRow/LeftHUD" unique_id=95805663]
+layout_mode = 2
+text = "Hero"
+
+[node name="HeroHealth" type="Label" parent="Layout/BottomBar/BottomMargin/BottomRow/LeftHUD" unique_id=1140437964]
+layout_mode = 2
+text = "Health"
+
+[node name="HeroHP" type="ProgressBar" parent="Layout/BottomBar/BottomMargin/BottomRow/LeftHUD" unique_id=410956061]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme = ExtResource("1_pylni")
+theme_type_variation = &"HeroBar"
+value = 5.0
+script = ExtResource("5_xh48a")
+pulse_bright = Color(0.23921569, 1, 0.47843137, 1)
+
+[node name="HeroHealthRow" type="HBoxContainer" parent="Layout/BottomBar/BottomMargin/BottomRow/LeftHUD" unique_id=201710821]
+layout_mode = 2
+
+[node name="MiddleHUD" type="VBoxContainer" parent="Layout/BottomBar/BottomMargin/BottomRow" unique_id=1448220813]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SongLabel" type="Label" parent="Layout/BottomBar/BottomMargin/BottomRow/MiddleHUD" unique_id=921667581]
+layout_mode = 2
+text = "Song Progress"
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="Layout/BottomBar/BottomMargin/BottomRow/MiddleHUD" unique_id=208588536]
+layout_mode = 2
+text = "0:00 / 3:12"
+horizontal_alignment = 1
+
+[node name="SongProgress" type="ProgressBar" parent="Layout/BottomBar/BottomMargin/BottomRow/MiddleHUD" unique_id=1113215294]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+theme_type_variation = &"SongBar"
+value = 40.0
+
+[node name="RightHUD" type="VBoxContainer" parent="Layout/BottomBar/BottomMargin/BottomRow" unique_id=2136592906]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+
+[node name="VillainName" type="Label" parent="Layout/BottomBar/BottomMargin/BottomRow/RightHUD" unique_id=1946921048]
+layout_mode = 2
+text = "Villain"
+horizontal_alignment = 2
+
+[node name="VillainHealth" type="Label" parent="Layout/BottomBar/BottomMargin/BottomRow/RightHUD" unique_id=264973224]
+layout_mode = 2
+text = "Health"
+horizontal_alignment = 2
+
+[node name="VillainHP" type="ProgressBar" parent="Layout/BottomBar/BottomMargin/BottomRow/RightHUD" unique_id=809918128]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+theme_type_variation = &"VillainBar"
+value = 20.0
+fill_mode = 1
+script = ExtResource("5_xh48a")
+normal_color = Color(0.63529414, 0.29803923, 1, 1)
+pulse_bright = Color(0.63529414, 0.29803923, 1, 1)

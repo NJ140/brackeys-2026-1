@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 UiEvent="*uid://c80tdesx77vhy"
+SelectedCharacter="*uid://yq5e8i3yuhpy"
+GameResult="*uid://3cdjjgejoioj"
 
 [display]
 

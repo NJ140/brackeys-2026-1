@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dn5gcpgf70tot"]
+[gd_scene format=3 uid="uid://8ratqr7rc3ld"]
 
-[ext_resource type="Script" uid="uid://b84f2j11fywq6" path="res://ui/title_screen.gd" id="1_7xhpk"]
+[ext_resource type="Script" uid="uid://copu7gpk38kjk" path="res://ui/scripts/result_screen.gd" id="1_johe8"]
 
 [sub_resource type="Animation" id="Animation_bor1v"]
 length = 0.001
@@ -49,25 +49,23 @@ tracks/0/keys = {
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_l1ku3"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ynqeu"]
 _data = {
 &"RESET": SubResource("Animation_bor1v"),
 &"fade_in": SubResource("Animation_qer0c"),
 &"fade_out": SubResource("Animation_dk6f0")
 }
 
-[node name="TitleScreen" type="Control" unique_id=525499513]
+[node name="ResultScreen" type="Control" unique_id=1388423486]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("1_7xhpk")
-next_scene_path = "res://ui/character_select.tscn"
+script = ExtResource("1_johe8")
 
-[node name="Center" type="CenterContainer" parent="." unique_id=605897857]
+[node name="Background" type="TextureRect" parent="." unique_id=781826827]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,32 +73,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Vbox" type="VBoxContainer" parent="Center" unique_id=1520936225]
-layout_mode = 2
-theme_override_constants/separation = 24
-alignment = 1
-
-[node name="TitleLabel" type="Label" parent="Center/Vbox" unique_id=751000240]
-layout_mode = 2
-theme_override_font_sizes/font_size = 55
-text = "Title"
-horizontal_alignment = 1
-
-[node name="PressLabel" type="Label" parent="Center/Vbox" unique_id=1204708978]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Press any button to continue"
-horizontal_alignment = 1
-
-[node name="Fade" type="ColorRect" parent="." unique_id=1076964418]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1913458832]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[node name="Anim" type="AnimationPlayer" parent="." unique_id=719644776]
-libraries/ = SubResource("AnimationLibrary_l1ku3")
+[node name="Anim" type="AnimationPlayer" parent="." unique_id=522896664]
+libraries/ = SubResource("AnimationLibrary_ynqeu")
+
+[node name="Center" type="CenterContainer" parent="." unique_id=1758245321]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Center" unique_id=1076273097]
+layout_mode = 2
+
+[node name="ResultLabel" type="Label" parent="Center/VBox" unique_id=1985197139]
+layout_mode = 2
+text = "Victory / Defeat
+"
+
+[node name="ScoreLabel" type="Label" parent="Center/VBox" unique_id=960884282]
+layout_mode = 2
+text = "Score: 1234"

@@ -295,7 +295,7 @@ custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 theme = ExtResource("1_pylni")
 theme_type_variation = &"HeroBar"
-value = 5.0
+value = 100.0
 script = ExtResource("5_xh48a")
 pulse_bright = Color(0.23921569, 1, 0.47843137, 1)
 
@@ -320,7 +320,6 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 18)
 layout_mode = 2
 theme_type_variation = &"SongBar"
-value = 40.0
 
 [node name="RightHUD" type="VBoxContainer" parent="Layout/BottomBar/BottomMargin/BottomRow" unique_id=2136592906]
 custom_minimum_size = Vector2(320, 0)
@@ -340,7 +339,7 @@ horizontal_alignment = 2
 custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
 theme_type_variation = &"VillainBar"
-value = 20.0
+value = 100.0
 fill_mode = 1
 script = ExtResource("5_xh48a")
 normal_color = Color(0.63529414, 0.29803923, 1, 1)

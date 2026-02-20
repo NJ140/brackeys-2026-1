@@ -1,4 +1,4 @@
-extends Node
+class_name RhythmMan extends Node
 
 enum HitWindow{
 	Early_Late,
@@ -41,6 +41,8 @@ var precount_start_time := 0.0
 
 func _ready() -> void:
 	audio_clock.play()
+
+func begin():
 	if current_song.song:
 		current_song.parse_marker_text()
 		start_lead_count()
@@ -53,18 +55,18 @@ func _ready() -> void:
 func deb(grade,err,index):
 	print(Grade.keys()[grade],", ",err,", ",index)
 
-
 func _input(event: InputEvent) -> void:
 	judge_input(event)
 
 func _process(delta: float) -> void:
+	var last_clock = current_clock_time
 	current_clock_time = get_clock_time_seconds()
+	var index = floori(current_clock_time/current_song.get_seconds_per_beat())
+	EventBus.rhythm.clock.emit(index,current_clock_time,current_clock_time-last_clock)
 	if not song_playing and in_lead_count: 
-		var index = floori(current_clock_time/current_song.get_seconds_per_beat())
 		if index != last_emitted_beat and index < current_song.lead_time_beat_count:
-			print(index)
-			last_emitted_beat = index
 			metronome.play(0.04)
+			last_emitted_beat = index
 			EventBus.rhythm.song_precount.emit(current_song.lead_time_beat_count, index)
 		if !song_playing and index >= current_song.lead_time_beat_count:
 			start_song()
@@ -107,15 +109,16 @@ func start_song():
 	in_lead_count = false
 	audio_player.stream = current_song.song
 	audio_player.play()
-	#var want := expected_song_pos()
-	#var have := audio_player.get_playback_position()
-#
-	#if abs(want - have) > 0.02:
-		#audio_player.seek(want)
+	var want := expected_song_pos()
+	var have := audio_player.get_playback_position()
+
+	if abs(want - have) > 0.02:
+		audio_player.seek(want)
 	last_marker_index = current_song.markers.size() - 1
 	song_playing = true
 
-func stop_song(): pass
+func stop_song(): 
+	pass
 
 func get_max_window():
 	return hit_windows_sec.values().max()
@@ -132,11 +135,14 @@ func get_current_song_time() -> float:
 	var t = audio_player.get_playback_position()
 	var delay = AudioServer.get_time_since_last_mix()
 	var latency = AudioServer.get_output_latency()
-
+	
+	if is_zero_approx(t):
+		return get_clock_time_seconds() - current_song.get_lead_time_sec()
 	return t + delay + calibration_offset_sec - latency
 
 func start_lead_count():
 	in_lead_count = true
+	EventBus.rhythm.song_starting.emit(current_song) 
 	precount_start_time = get_clock_time_seconds()
 
 func get_clock_time_seconds() -> float:

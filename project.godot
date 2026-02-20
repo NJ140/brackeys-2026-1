@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 GameResult="*res://ui/scripts/GameResult.gd"
 SelectedCharacter="*res://ui/scripts/SelectedCharacter.gd"
+GlobalRhythmManager="*uid://b3f2gh78a2pcs"
+EventBus="*uid://bxu3phsvioo3p"
 UiEvent="*uid://c80tdesx77vhy"
 
 [display]

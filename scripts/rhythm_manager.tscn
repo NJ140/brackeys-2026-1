@@ -1,9 +1,30 @@
 [gd_scene format=3 uid="uid://b3f2gh78a2pcs"]
 
 [ext_resource type="Script" uid="uid://887y5k6poo43" path="res://scripts/rhythm_manager.gd" id="1_0wx20"]
+[ext_resource type="Script" uid="uid://c124k25pg7lqv" path="res://scripts/battle_song.gd" id="2_lelfx"]
+[ext_resource type="AudioStream" uid="uid://cgwu1kv7361ow" path="res://music/test.ogg" id="3_t7l6v"]
+[ext_resource type="AudioStream" uid="uid://cwkymqdetlgm4" path="res://assets/placeholders/metronome-85688.mp3" id="4_t7l6v"]
+
+[sub_resource type="Resource" id="Resource_pqmgx"]
+script = ExtResource("2_lelfx")
+song = ExtResource("3_t7l6v")
+marker_text_path = "res://music/test.txt"
+metadata/_custom_type_script = "uid://c124k25pg7lqv"
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_t7l6v"]
 
 [node name="RhythmManager" type="Node" unique_id=341360667]
 script = ExtResource("1_0wx20")
+current_song = SubResource("Resource_pqmgx")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=72373070]
+[node name="AudioClock" type="AudioStreamPlayer" parent="." unique_id=1074124240]
 unique_name_in_owner = true
+stream = SubResource("AudioStreamGenerator_t7l6v")
+autoplay = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=613431294]
+unique_name_in_owner = true
+
+[node name="MetronomePlayer" type="AudioStreamPlayer" parent="." unique_id=1799187698]
+unique_name_in_owner = true
+stream = ExtResource("4_t7l6v")

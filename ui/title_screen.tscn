@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dn5gcpgf70tot"]
 
-[ext_resource type="Script" uid="uid://b84f2j11fywq6" path="res://ui/title_screen.gd" id="1_7xhpk"]
+[ext_resource type="Script" path="res://ui/title_screen.gd" id="1_7xhpk"]
 
 [sub_resource type="Animation" id="Animation_bor1v"]
 length = 0.001

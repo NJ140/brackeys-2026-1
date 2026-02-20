@@ -6,6 +6,7 @@ extends Control
 @export var low_threshold: float = 0.20   # 20%
 @export var fade_seconds: float = 0.25
 @export var ease_curve_power: float = 1.6 # higher = more edge-only feeling
+@onready var score_value_label: Label = %ScoreValueLabel
 
 var _hero_hp: Range
 var _mat: ShaderMaterial
@@ -13,6 +14,7 @@ var _tween: Tween
 
 
 func _ready() -> void:
+	#UiEvent.score_changed.connect(score_value_label)
 	_hero_hp = get_node(hero_hp_path) as Range
 	var vignette := get_node(vignette_path) as ColorRect
 	

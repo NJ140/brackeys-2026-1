@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://ca6ext88sx6rv"]
 
 [ext_resource type="Theme" uid="uid://37htgicgqqth" path="res://ui/ui_theme.tres" id="1_pylni"]
-[ext_resource type="Texture2D" uid="uid://co7v3lgn3ul1g" path="res://icon.svg" id="2_7hrjk"]
 [ext_resource type="Texture2D" uid="uid://bhpcfieyg117w" path="res://ui/Images/OIP.webp" id="2_pylni"]
 [ext_resource type="Script" uid="uid://bg37f4q7jx0f3" path="res://ui/vignette_low_hp.gd" id="2_xh48a"]
-[ext_resource type="Shader" uid="uid://gmkagrl8s1th" path="res://ui/red_vignette.gdshader" id="5_2uxy6"]
-[ext_resource type="Script" uid="uid://ck6b0ageqvbgk" path="res://ui/hp_pulse.gd" id="5_xh48a"]
+[ext_resource type="Shader" path="res://ui/red_vignette.gdshader" id="5_2uxy6"]
+[ext_resource type="Script" path="res://ui/hp_pulse.gd" id="5_xh48a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xh48a"]
 bg_color = Color(0.13333334, 0.14509805, 0.16470589, 1)
@@ -115,10 +114,11 @@ layout_mode = 2
 text = "Score:"
 
 [node name="ScoreValueLabel" type="Label" parent="Layout/TopBar/TopMargin/TopRoot/TopRow/RightScore" unique_id=651230930]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "999"
+text = "0"
 
 [node name="CenterOverlay" type="CenterContainer" parent="Layout/TopBar/TopMargin/TopRoot" unique_id=1325627419]
 layout_mode = 1
@@ -176,20 +176,6 @@ grow_vertical = 2
 texture = ExtResource("2_pylni")
 stretch_mode = 4
 
-[node name="World2D" type="Node2D" parent="Layout/CenterArea/GameView/SubViewport/World" unique_id=812566633]
-
-[node name="Sprite2" type="Sprite2D" parent="Layout/CenterArea/GameView/SubViewport/World/World2D" unique_id=48663962]
-position = Vector2(0, -279.125)
-scale = Vector2(1, 1.6015625)
-texture = ExtResource("2_7hrjk")
-offset = Vector2(250, 400)
-
-[node name="Sprite2D" type="Sprite2D" parent="Layout/CenterArea/GameView/SubViewport/World/World2D" unique_id=773386388]
-position = Vector2(0, -308.125)
-scale = Vector2(1, 1.6640625)
-texture = ExtResource("2_7hrjk")
-offset = Vector2(1030, 400)
-
 [node name="BattleLayout" type="Control" parent="Layout/CenterArea/GameView/SubViewport/World" unique_id=1747917964]
 layout_mode = 1
 anchors_preset = 15
@@ -211,40 +197,13 @@ theme_override_constants/separation = 20
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 
-[node name="DebugTint" type="ColorRect" parent="Layout/CenterArea/GameView/SubViewport/World/BattleLayout/BattleRow/LeftZone" unique_id=202880317]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.972549, 0.4392157, 0.27058825, 0.3019608)
-
 [node name="ArenaZone" type="Control" parent="Layout/CenterArea/GameView/SubViewport/World/BattleLayout/BattleRow" unique_id=1787107985]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DebugTint" type="ColorRect" parent="Layout/CenterArea/GameView/SubViewport/World/BattleLayout/BattleRow/ArenaZone" unique_id=1838791995]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.972549, 0.4392157, 0.27058825, 0.3137255)
-
 [node name="RightZone" type="Control" parent="Layout/CenterArea/GameView/SubViewport/World/BattleLayout/BattleRow" unique_id=620044898]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
-
-[node name="DebugTint" type="ColorRect" parent="Layout/CenterArea/GameView/SubViewport/World/BattleLayout/BattleRow/RightZone" unique_id=1389632098]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.972549, 0.4392157, 0.27058825, 0.3137255)
 
 [node name="Vignette" type="ColorRect" parent="Layout/CenterArea" unique_id=387232383]
 material = SubResource("ShaderMaterial_hgyfx")

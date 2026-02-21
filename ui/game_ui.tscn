@@ -3,8 +3,8 @@
 [ext_resource type="Theme" uid="uid://37htgicgqqth" path="res://ui/ui_theme.tres" id="1_pylni"]
 [ext_resource type="Texture2D" uid="uid://bhpcfieyg117w" path="res://ui/Images/OIP.webp" id="2_pylni"]
 [ext_resource type="Script" uid="uid://bg37f4q7jx0f3" path="res://ui/vignette_low_hp.gd" id="2_xh48a"]
-[ext_resource type="Shader" path="res://ui/red_vignette.gdshader" id="5_2uxy6"]
-[ext_resource type="Script" path="res://ui/hp_pulse.gd" id="5_xh48a"]
+[ext_resource type="Shader" uid="uid://gmkagrl8s1th" path="res://ui/red_vignette.gdshader" id="5_2uxy6"]
+[ext_resource type="Script" uid="uid://ck6b0ageqvbgk" path="res://ui/hp_pulse.gd" id="5_xh48a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xh48a"]
 bg_color = Color(0.13333334, 0.14509805, 0.16470589, 1)
@@ -77,6 +77,7 @@ layout_mode = 2
 text = "Pause"
 
 [node name="PlayButton" type="Button" parent="Layout/TopBar/TopMargin/TopRoot/TopRow/LeftControls" unique_id=662586751]
+visible = false
 layout_mode = 2
 text = "Play"
 

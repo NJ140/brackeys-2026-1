@@ -2,6 +2,25 @@
 
 [ext_resource type="Script" uid="uid://copu7gpk38kjk" path="res://ui/scripts/result_screen.gd" id="1_johe8"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_johe8"]
+bg_color = Color(0.016219458, 0.016219461, 0.016219446, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0344904, 0.034490447, 0.034490433, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 2
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1pa26"]
+bg_color = Color(0.5058824, 0, 0.03137255, 1)
+corner_radius_top_left = 12
+corner_radius_bottom_left = 12
+
 [sub_resource type="Animation" id="Animation_bor1v"]
 length = 0.001
 tracks/0/type = "value"
@@ -73,7 +92,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1913458832]
+[node name="Fade" type="ColorRect" parent="." unique_id=1913458832]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,9 +100,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
-
-[node name="Anim" type="AnimationPlayer" parent="." unique_id=522896664]
-libraries/ = SubResource("AnimationLibrary_ynqeu")
 
 [node name="Center" type="CenterContainer" parent="." unique_id=1758245321]
 layout_mode = 1
@@ -93,14 +109,49 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="Center" unique_id=1076273097]
+[node name="Card" type="Panel" parent="Center" unique_id=11581282]
+custom_minimum_size = Vector2(420, 180)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_johe8")
 
-[node name="ResultLabel" type="Label" parent="Center/VBox" unique_id=1985197139]
+[node name="AccentBar" type="Panel" parent="Center/Card" unique_id=753917153]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_right = 18.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1pa26")
+
+[node name="Content" type="MarginContainer" parent="Center/Card" unique_id=2040935209]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="VBox" type="VBoxContainer" parent="Center/Card/Content" unique_id=1076273097]
 layout_mode = 2
-text = "Victory / Defeat
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="ResultLabel" type="Label" parent="Center/Card/Content/VBox" unique_id=1985197139]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "VICTORY/DEFEAT
 "
 
-[node name="ScoreLabel" type="Label" parent="Center/VBox" unique_id=960884282]
+[node name="ScoreLabel" type="Label" parent="Center/Card/Content/VBox" unique_id=960884282]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Score: 1234"
+
+[node name="HintLabel" type="Label" parent="Center/Card/Content/VBox" unique_id=1124696099]
+layout_mode = 2
+text = "Press any key"
+
+[node name="Anim" type="AnimationPlayer" parent="." unique_id=522896664]
+libraries/ = SubResource("AnimationLibrary_ynqeu")

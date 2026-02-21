@@ -5,10 +5,10 @@ extends Control
 @export var defeat_bg: Texture2D
 
 @onready var background: TextureRect = $Background
-@onready var fade_rect: ColorRect = $ColorRect
+@onready var fade_rect: ColorRect = $Fade
 @onready var anim: AnimationPlayer = $Anim
-@onready var result_label: Label = $Center/VBox/ResultLabel
-@onready var score_label: Label = $Center/VBox/ScoreLabel
+@onready var result_label: Label = $Center/Card/Content/VBox/ResultLabel
+@onready var score_label: Label = $Center/Card/Content/VBox/ScoreLabel
 
 var _transitioning := false
 

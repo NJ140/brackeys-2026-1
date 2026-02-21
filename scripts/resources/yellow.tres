@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BattleSong" format=3 uid="uid://dmefqfyortnfh"]
+
+[ext_resource type="Script" uid="uid://c124k25pg7lqv" path="res://scripts/battle_song.gd" id="1_sd320"]
+[ext_resource type="AudioStream" uid="uid://bn3ph0p6r6t7j" path="res://music/yellow.ogg" id="2_pdhwk"]
+
+[resource]
+script = ExtResource("1_sd320")
+song = ExtResource("2_pdhwk")
+marker_text_path = "res://music/yellow.txt"
+metadata/_custom_type_script = "uid://c124k25pg7lqv"

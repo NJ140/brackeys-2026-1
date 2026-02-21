@@ -1,4 +1,6 @@
-class_name Marker extends Sprite2D
+class_name Marker extends Node2D
+
+@onready var sprite: AnimatedSprite2D = %Marker
 
 var rhythm_manager :RhythmMan= GlobalRhythmManager
 var spawn_point:Vector2

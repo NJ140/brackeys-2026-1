@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Brackeys 2026 1"
-run/main_scene="uid://dn5gcpgf70tot"
+run/main_scene="uid://c3vwhp8cb85v"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,8 +20,8 @@ config/icon="res://icon.svg"
 GameResult="*res://ui/scripts/GameResult.gd"
 SelectedCharacter="*res://ui/scripts/SelectedCharacter.gd"
 GlobalRhythmManager="*uid://b3f2gh78a2pcs"
-EventBus="*uid://bxu3phsvioo3p"
 UiEvent="*uid://c80tdesx77vhy"
+EventBus="*uid://o3fijmtfg2xh"
 
 [display]
 
@@ -37,7 +37,6 @@ folder_colors={
 "res://builds/": "red",
 "res://music/": "purple",
 "res://music_raw/": "purple",
-"res://scenes/": "yellow",
 "res://scripts/": "pink",
 "res://tools/": "gray",
 "res://ui/": "blue"

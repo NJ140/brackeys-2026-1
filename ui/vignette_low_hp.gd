@@ -12,7 +12,6 @@ var _hero_hp: Range
 var _mat: ShaderMaterial
 var _tween: Tween
 
-
 func _ready() -> void:
 	#UiEvent.score_changed.connect(score_value_label)
 	_hero_hp = get_node(hero_hp_path) as Range

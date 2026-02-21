@@ -46,6 +46,7 @@ func begin():
 	if current_song.song:
 		current_song.parse_marker_text()
 		start_lead_count()
+		last_marker_index = current_song.markers.size() - 1
 	else:
 		print("no song")
 	hit_windows = hit_windows_sec.keys()
@@ -85,6 +86,7 @@ func expected_song_pos() -> float:
 	return max(0.0, now_clock - boundary_clock)
 
 func judge_input(_event:InputEvent):
+	current_song_time = get_current_song_time()
 	if Input.is_action_just_pressed("hit"):
 		if not next_marker_index <= last_marker_index: return
 		var next_marker = current_song.markers[next_marker_index] 
@@ -98,7 +100,7 @@ func judge_input(_event:InputEvent):
 			match window:
 				HitWindow.Perfect: grade = Grade.Perfect
 				HitWindow.Good: grade = Grade.Good
-				HitWindow.Early_Late: grade = Grade.Early if hit_distance > 0 else Grade.Late
+				HitWindow.Early_Late: grade = Grade.Early if hit_distance <= 0 else Grade.Late
 			if abs(hit_distance) < hit_windows_sec[window]:
 				EventBus.rhythm.marker_judged.emit(grade,hit_distance,next_marker_index)
 				if next_marker_index <= last_marker_index:

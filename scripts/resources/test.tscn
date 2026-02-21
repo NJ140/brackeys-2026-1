@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6wjlpm8bbdkm"]
 
 [ext_resource type="Script" uid="uid://drtcewr6aewyw" path="res://scripts/tests/test.gd" id="1_0x2qk"]
-[ext_resource type="Script" uid="uid://cowab46yyadaw" path="res://scripts/marker_spawner.gd" id="3_jes2t"]
+[ext_resource type="PackedScene" uid="uid://cmkcj723i5ms5" path="res://scripts/resources/marker_spawner.tscn" id="2_lt021"]
 
 [sub_resource type="Animation" id="Animation_lt021"]
 step = 0.0083
@@ -86,13 +86,4 @@ offset_right = 229.0
 offset_bottom = 175.0
 theme_override_font_sizes/font_size = 128
 
-[node name="MarkerSpawner" type="Node2D" parent="." unique_id=1609633137]
-script = ExtResource("3_jes2t")
-
-[node name="Enemy" type="Node2D" parent="." unique_id=1147991775]
-unique_name_in_owner = true
-position = Vector2(1073, 362)
-
-[node name="Player" type="Node2D" parent="." unique_id=1696034001]
-unique_name_in_owner = true
-position = Vector2(205, 362)
+[node name="MarkerSpawner" parent="." unique_id=1809803881 instance=ExtResource("2_lt021")]

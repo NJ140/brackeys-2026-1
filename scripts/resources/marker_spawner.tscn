@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cmkcj723i5ms5"]
+
+[ext_resource type="Script" uid="uid://cowab46yyadaw" path="res://scripts/marker_spawner.gd" id="1_ukv30"]
+
+[node name="MarkerSpawner" type="Node2D" unique_id=1809803881]
+script = ExtResource("1_ukv30")
+
+[node name="Enemy" type="Node2D" parent="." unique_id=1177778057]
+unique_name_in_owner = true
+position = Vector2(1073, 362)
+
+[node name="Player" type="Node2D" parent="." unique_id=356545426]
+unique_name_in_owner = true
+position = Vector2(205, 362)

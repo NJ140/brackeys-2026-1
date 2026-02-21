@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BattleSong" format=3 uid="uid://bmx4dnyvw5leu"]
+
+[ext_resource type="Script" uid="uid://c124k25pg7lqv" path="res://scripts/battle_song.gd" id="1_24jeg"]
+[ext_resource type="AudioStream" uid="uid://dfxrsm206y73g" path="res://music/untitledno4.ogg" id="2_r03lj"]
+
+[resource]
+script = ExtResource("1_24jeg")
+song = ExtResource("2_r03lj")
+metadata/_custom_type_script = "uid://c124k25pg7lqv"

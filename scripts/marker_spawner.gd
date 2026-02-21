@@ -6,7 +6,7 @@ enum MarkerType{
 
 var rhythm_manager :RhythmMan = GlobalRhythmManager
 @export var marker_active_speed_beats : Dictionary[MarkerType,float] = {
-	MarkerType.Slash : 3.0
+	MarkerType.Slash : 2.0
 }
 
 @onready var player: Node2D = %Player
@@ -27,6 +27,7 @@ func prep_markers_for_song(battle_song:BattleSong):
 		var spawn_time = marker - (battle_song.get_seconds_per_beat() * marker_type_speed)
 		qeueed_marker_spawn.append(spawn_time)
 	song_qeueed = true
+	EventBus.spawning.marker_spawns_set.emit(qeueed_marker_spawn)
 
 func _process(_delta: float) -> void:
 	if !(song_qeueed): return
@@ -39,9 +40,10 @@ func _process(_delta: float) -> void:
 		m.spawn_time = spawn
 		m.spawn_point = enemy.global_position
 		m.end_point = player.global_position
-		m.time_to_hit = rhythm_manager.current_song.markers[current_index]
+		m.time_to_hit = rhythm_manager.current_song.markers[current_index] + rhythm_manager.get_max_window()
 		m.u_position = (rhythm_manager.get_current_song_time() - spawn) / (m.time_to_hit - spawn)
 		m.id = current_index
+		m.scale *= 1.2
 		add_child(m)
 		current_index += 1
 

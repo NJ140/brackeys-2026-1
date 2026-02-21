@@ -1,8 +1,73 @@
 [gd_scene format=3 uid="uid://cbv6dqw3hqufp"]
 
-[ext_resource type="Texture2D" uid="uid://co7v3lgn3ul1g" path="res://icon.svg" id="1_mkov4"]
+[ext_resource type="Shader" uid="uid://m3ern0jbf81w" path="res://assets/shaders/2d_outline.gdshader" id="1_670xe"]
+[ext_resource type="Texture2D" uid="uid://cp8yjpm7sw7db" path="res://assets/projectiles/spritesheet.png" id="1_mkov4"]
 [ext_resource type="Script" uid="uid://co4uuf1fs03ek" path="res://scripts/resources/marker.gd" id="2_670xe"]
 
-[node name="Marker" type="Sprite2D" unique_id=748560222]
-texture = ExtResource("1_mkov4")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2k2uc"]
+shader = ExtResource("1_670xe")
+shader_parameter/line_color = Color(1, 0, 0, 1)
+shader_parameter/line_thickness = 3.0000001425
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_670xe"]
+atlas = ExtResource("1_mkov4")
+region = Rect2(6, 0, 95, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k2uc"]
+atlas = ExtResource("1_mkov4")
+region = Rect2(101, 0, 95, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqgdm"]
+atlas = ExtResource("1_mkov4")
+region = Rect2(196, 0, 95, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7j25"]
+atlas = ExtResource("1_mkov4")
+region = Rect2(291, 0, 95, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df4hj"]
+atlas = ExtResource("1_mkov4")
+region = Rect2(386, 0, 95, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jeb37"]
+atlas = ExtResource("1_mkov4")
+region = Rect2(481, 0, 95, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndlmc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_670xe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2k2uc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqgdm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7j25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df4hj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jeb37")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=1558773863]
 script = ExtResource("2_670xe")
+
+[node name="Marker" type="AnimatedSprite2D" parent="." unique_id=1971459341]
+unique_name_in_owner = true
+texture_filter = 1
+material = SubResource("ShaderMaterial_2k2uc")
+sprite_frames = SubResource("SpriteFrames_ndlmc")
+autoplay = "default"
+frame_progress = 0.6645396
+flip_h = true
+flip_v = true

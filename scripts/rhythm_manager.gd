@@ -41,6 +41,7 @@ var precount_start_time := 0.0
 
 func _ready() -> void:
 	audio_clock.play()
+	EventBus.rhythm.marker_judged.connect(deb)
 
 func reset():
 	audio_clock.play()
@@ -72,7 +73,6 @@ func begin(song:BattleSong):
 		print("no song")
 	hit_windows = hit_windows_sec.keys()
 	hit_windows.sort_custom(func(a,b): return hit_windows_sec[a] < hit_windows_sec[b])
-	EventBus.rhythm.marker_judged.connect(deb)
 
 func deb(grade,err,index):
 	print(Grade.keys()[grade],", ",err,", ",index)

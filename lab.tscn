@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://c3vwhp8cb85v"]
+
+[ext_resource type="Script" uid="uid://brw3ufe7loopy" path="res://battle.gd" id="1_ecarl"]
+[ext_resource type="PackedScene" uid="uid://ca6ext88sx6rv" path="res://ui/game_ui.tscn" id="2_epn36"]
+[ext_resource type="Resource" uid="uid://bmx4dnyvw5leu" path="res://scripts/resources/untitledno4.tres" id="2_vu75y"]
+[ext_resource type="PackedScene" uid="uid://cmkcj723i5ms5" path="res://scripts/resources/marker_spawner.tscn" id="3_vu75y"]
+[ext_resource type="Shader" uid="uid://m3ern0jbf81w" path="res://assets/shaders/2d_outline.gdshader" id="4_q077n"]
+[ext_resource type="Texture2D" uid="uid://cp8yjpm7sw7db" path="res://assets/projectiles/spritesheet.png" id="5_j8bva"]
+[ext_resource type="PackedScene" uid="uid://1neiinyfrf6g" path="res://character.tscn" id="6_64rup"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
+shader = ExtResource("4_q077n")
+shader_parameter/line_color = Color(0, 1, 1, 1)
+shader_parameter/line_thickness = 1.250000059375
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
+atlas = ExtResource("5_j8bva")
+region = Rect2(0, 0, 111, 48)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mycd"]
+shader = ExtResource("4_q077n")
+shader_parameter/line_color = Color(0, 1, 0, 1)
+shader_parameter/line_thickness = 2.000000095
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_272bh"]
+shader = ExtResource("4_q077n")
+shader_parameter/line_color = Color(0.63529414, 0.29803923, 1, 1)
+shader_parameter/line_thickness = 2.000000095
+
+[sub_resource type="Animation" id="Animation_bor1v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qer0c"]
+resource_name = "fade_in"
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_dk6f0"]
+resource_name = "fade_out"
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_epn36"]
+_data = {
+&"RESET": SubResource("Animation_bor1v"),
+&"fade_in": SubResource("Animation_qer0c"),
+&"fade_out": SubResource("Animation_dk6f0")
+}
+
+[node name="Lab" type="Node" unique_id=1875043012]
+script = ExtResource("1_ecarl")
+battle_song = ExtResource("2_vu75y")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=129050500]
+
+[node name="UI" parent="CanvasLayer" unique_id=1497426625 instance=ExtResource("2_epn36")]
+
+[node name="World" type="Node2D" parent="CanvasLayer" unique_id=1068550945]
+
+[node name="MarkerSpawner" parent="CanvasLayer/World" unique_id=1809803881 instance=ExtResource("3_vu75y")]
+
+[node name="Enemy" parent="CanvasLayer/World/MarkerSpawner" index="0" unique_id=1177778057]
+position = Vector2(985.5, 444.24997)
+
+[node name="Player" parent="CanvasLayer/World/MarkerSpawner" index="1" unique_id=356545426]
+position = Vector2(252, 431.24997)
+
+[node name="HitIndecator" type="Sprite2D" parent="CanvasLayer/World/MarkerSpawner/Player" index="0" unique_id=137163729]
+texture_filter = 1
+material = SubResource("ShaderMaterial_5vw27")
+position = Vector2(134, 0)
+scale = Vector2(1.2335835, 1.2335835)
+texture = SubResource("AtlasTexture_5vw27")
+flip_h = true
+flip_v = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/World/MarkerSpawner/Player/HitIndecator" unique_id=2133607916]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+texture = SubResource("AtlasTexture_5vw27")
+flip_h = true
+flip_v = true
+
+[node name="Player" parent="CanvasLayer/World" unique_id=1687183795 instance=ExtResource("6_64rup")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_7mycd")
+position = Vector2(243.5, 378.25)
+scale = Vector2(1.6328123, 1.6914061)
+
+[node name="Enemy" parent="CanvasLayer/World" unique_id=91199717 instance=ExtResource("6_64rup")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_272bh")
+position = Vector2(1040.5, 378.25)
+scale = Vector2(1.6328123, 1.6914061)
+flip_h = true
+is_enemy = true
+
+[node name="Fade" type="ColorRect" parent="." unique_id=889536041]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Anim" type="AnimationPlayer" parent="." unique_id=130982689]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_epn36")
+
+[editable path="CanvasLayer/World/MarkerSpawner"]

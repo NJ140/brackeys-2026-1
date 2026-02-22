@@ -36,6 +36,7 @@ func _ready() -> void:
 
 	# React to HP changes
 	_hero_hp.value_changed.connect(_on_hp_changed)
+	
 
 
 func _on_hp_changed(value: float) -> void:
@@ -79,3 +80,7 @@ func _apply_strength(target: float) -> void:
 		target,
 		fade_seconds
 	)
+
+
+func _on_pause_button_pressed() -> void:
+	pass # Replace with function body.

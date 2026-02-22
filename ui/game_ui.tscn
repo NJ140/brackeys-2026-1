@@ -3,8 +3,13 @@
 [ext_resource type="Theme" uid="uid://37htgicgqqth" path="res://ui/ui_theme.tres" id="1_pylni"]
 [ext_resource type="Script" uid="uid://bg37f4q7jx0f3" path="res://ui/vignette_low_hp.gd" id="2_xh48a"]
 [ext_resource type="Script" uid="uid://bsrxqcne0busa" path="res://ui/volume_slider.gd" id="3_3vkek"]
+[ext_resource type="Script" uid="uid://dyvvh7em1r6a7" path="res://ui/pause_button.gd" id="3_f7kcv"]
+[ext_resource type="Script" uid="uid://c8ve2uvfki3qo" path="res://ui/score_value_label.gd" id="4_vtgmo"]
+[ext_resource type="Texture2D" uid="uid://ch0rgwbmtugan" path="res://assets/bg/Lab009.png" id="4_xh48a"]
 [ext_resource type="Shader" uid="uid://gmkagrl8s1th" path="res://ui/red_vignette.gdshader" id="5_2uxy6"]
 [ext_resource type="Script" uid="uid://ck6b0ageqvbgk" path="res://ui/hp_pulse.gd" id="5_xh48a"]
+[ext_resource type="Script" uid="uid://b3rlm8tkq6pcc" path="res://ui/song_progress.gd" id="7_2uxy6"]
+[ext_resource type="Script" uid="uid://dw8v3q7clyhe7" path="res://ui/song_label.gd" id="7_hgyfx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xh48a"]
 bg_color = Color(0.13333334, 0.14509805, 0.16470589, 1)
@@ -14,14 +19,6 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0.22745098, 0.24705882, 0.27450982, 1)
 corner_detail = 12
-
-[sub_resource type="Gradient" id="Gradient_pylni"]
-offsets = PackedFloat32Array(0, 0.6666667, 0.6714976, 1)
-colors = PackedColorArray(0, 0.04726079, 0.030705199, 1, 0.16178623, 0.51760733, 9.62615e-08, 1, 0.3225161, 0.0010680695, 0.53364426, 1, 0.15689075, 0.00026712567, 0.27539194, 1)
-metadata/_snap_count = 3
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_3vkek"]
-gradient = SubResource("Gradient_pylni")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hgyfx"]
 shader = ExtResource("5_2uxy6")
@@ -84,10 +81,13 @@ alignment = 1
 layout_mode = 2
 
 [node name="PauseButton" type="Button" parent="Layout/TopBar/TopMargin/TopRoot/TopRow/LeftControls/HBoxContainer" unique_id=1934003380]
+process_mode = 3
 layout_mode = 2
 text = "Pause"
+script = ExtResource("3_f7kcv")
 
 [node name="PlayButton" type="Button" parent="Layout/TopBar/TopMargin/TopRoot/TopRow/LeftControls/HBoxContainer" unique_id=662586751]
+visible = false
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -135,6 +135,7 @@ custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "0"
+script = ExtResource("4_vtgmo")
 
 [node name="CenterOverlay" type="CenterContainer" parent="Layout/TopBar/TopMargin/TopRoot" unique_id=1325627419]
 layout_mode = 1
@@ -146,6 +147,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="SceneNameLabel" type="Label" parent="Layout/TopBar/TopMargin/TopRoot/CenterOverlay" unique_id=1910638653]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Scene Name"
@@ -181,6 +183,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="Layout/CenterArea/GameView/SubViewport/World" unique_id=614800993]
+modulate = Color(0.46618086, 0.4661808, 0.4661808, 1)
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -188,7 +191,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture1D_3vkek")
+texture = ExtResource("4_xh48a")
 
 [node name="BattleLayout" type="Control" parent="Layout/CenterArea/GameView/SubViewport/World" unique_id=1747917964]
 layout_mode = 1
@@ -256,12 +259,13 @@ custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 
 [node name="HeroName" type="Label" parent="Layout/BottomBar/BottomMargin/BottomRow/LeftHUD" unique_id=95805663]
+visible = false
 layout_mode = 2
 text = "Hero"
 
 [node name="HeroHealth" type="Label" parent="Layout/BottomBar/BottomMargin/BottomRow/LeftHUD" unique_id=1140437964]
 layout_mode = 2
-text = "Health"
+text = "Hero Health"
 
 [node name="HeroHP" type="ProgressBar" parent="Layout/BottomBar/BottomMargin/BottomRow/LeftHUD" unique_id=410956061]
 custom_minimum_size = Vector2(0, 24)
@@ -288,32 +292,40 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "0:00 / 3:12"
 horizontal_alignment = 1
+script = ExtResource("7_hgyfx")
 
 [node name="SongProgress" type="ProgressBar" parent="Layout/BottomBar/BottomMargin/BottomRow/MiddleHUD" unique_id=1113215294]
 custom_minimum_size = Vector2(0, 18)
 layout_mode = 2
 theme_type_variation = &"SongBar"
+max_value = 1.0
+script = ExtResource("7_2uxy6")
 
 [node name="RightHUD" type="VBoxContainer" parent="Layout/BottomBar/BottomMargin/BottomRow" unique_id=2136592906]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 
 [node name="VillainName" type="Label" parent="Layout/BottomBar/BottomMargin/BottomRow/RightHUD" unique_id=1946921048]
+visible = false
 layout_mode = 2
 text = "Villain"
 horizontal_alignment = 2
 
 [node name="VillainHealth" type="Label" parent="Layout/BottomBar/BottomMargin/BottomRow/RightHUD" unique_id=264973224]
 layout_mode = 2
-text = "Health"
+text = "Villain Health"
 horizontal_alignment = 2
 
 [node name="VillainHP" type="ProgressBar" parent="Layout/BottomBar/BottomMargin/BottomRow/RightHUD" unique_id=809918128]
 custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
 theme_type_variation = &"VillainBar"
-value = 100.0
+max_value = 500.0
+value = 500.0
 fill_mode = 1
 script = ExtResource("5_xh48a")
+is_enemy = true
 normal_color = Color(0.63529414, 0.29803923, 1, 1)
 pulse_bright = Color(0.63529414, 0.29803923, 1, 1)
+
+[connection signal="pressed" from="Layout/TopBar/TopMargin/TopRoot/TopRow/LeftControls/HBoxContainer/PauseButton" to="Layout/TopBar/TopMargin/TopRoot/TopRow/LeftControls/HBoxContainer/PauseButton" method="_on_pressed"]

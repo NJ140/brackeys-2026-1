@@ -43,7 +43,6 @@ func _process(_delta: float) -> void:
 		m.time_to_hit = rhythm_manager.current_song.markers[current_index] + rhythm_manager.get_max_window()
 		m.u_position = (rhythm_manager.get_current_song_time() - spawn) / (m.time_to_hit - spawn)
 		m.id = current_index
-		m.scale *= 1.2
 		add_child(m)
 		current_index += 1
 

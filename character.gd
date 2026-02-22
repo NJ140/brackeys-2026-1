@@ -1,10 +1,13 @@
 extends AnimatedSprite2D
 
+
+
+const BLOCK = "attack_2"
 const ATTACK = "attack_1"
 const IDLE = "idle"
 
-
 @export var is_enemy := false
+
 var times_to_attack := []
 var index := 0
 
@@ -12,6 +15,12 @@ func _ready() -> void:
 	if is_enemy:
 		EventBus.spawning.marker_spawns_set.connect(on_marker_spawns_set)
 	animation_finished.connect(play.bind(IDLE))
+
+func _input(event: InputEvent) -> void:
+	if is_enemy: return
+	
+	if (event is InputEventKey or event is InputEventMouseButton) and event.is_pressed():
+		play("attack_2")
 
 func  _process(delta: float) -> void:
 	if not is_enemy: return

@@ -1,5 +1,6 @@
 extends ProgressBar
 
+@export var is_enemy := false
 @export var low_threshold := 0.25
 
 # Set this per bar in the Inspector:
@@ -10,7 +11,6 @@ extends ProgressBar
 @export var pulse_bright := Color("#FF6B6B") # brighter red for pulse peak
 @export var pulse_seconds := 0.8
 
-
 var _fill_override: StyleBoxFlat
 var _pulse_tween: Tween
 var _is_low := false
@@ -19,6 +19,10 @@ func _ready() -> void:
 	_prepare_fill_override()
 	value_changed.connect(_on_value_changed)
 	_on_value_changed(value)
+	if is_enemy:
+		EventBus.combat.enemy_damage.connect(func(v): value -= v)
+	else:
+		EventBus.combat.hero_damage.connect(func(v): value -= v)
 
 func _prepare_fill_override() -> void:
 	# Duplicate so we don't edit the shared Theme resource.

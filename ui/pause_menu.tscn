@@ -166,6 +166,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fob5h")
 text = "Resume"
 
 [node name="QuitButton" type="Button" parent="Panel/MarginContainer/VBox" unique_id=1463325925]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 5

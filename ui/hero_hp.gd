@@ -14,6 +14,7 @@ func _on_value_changed(_v: float) -> void:
 
 func update_color() -> void:
 	if max_value <= min_value:
+		EventBus.combat.enemy_defeted.emit()
 		return
 
 	var ratio := (value - min_value) / (max_value - min_value)

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://k65unsj2pqpp"]
+
+[ext_resource type="PackedScene" uid="uid://c3vwhp8cb85v" path="res://lab.tscn" id="1_mol8p"]
+[ext_resource type="Texture2D" uid="uid://d07c8h1p8avgh" path="res://assets/bg/NW.png" id="2_duiv2"]
+[ext_resource type="Resource" uid="uid://dmefqfyortnfh" path="res://scripts/resources/yellow.tres" id="2_h0nnu"]
+
+[node name="Night" unique_id=1875043012 instance=ExtResource("1_mol8p")]
+next_scene_path = null
+victory = null
+battle_song = ExtResource("2_h0nnu")
+is_last = true
+
+[node name="Background" parent="CanvasLayer/UI/Layout/CenterArea/GameView/SubViewport/World" parent_id_path=PackedInt32Array(1497426625, 331068388) index="0" unique_id=614800993]
+texture = ExtResource("2_duiv2")
+
+[editable path="CanvasLayer/UI"]
+[editable path="CanvasLayer/World/MarkerSpawner"]

@@ -1,6 +1,6 @@
 extends Control
 
-@export var battle_scene_path: String = "res://ui/game_ui.tscn"
+@export var battle_scene_path: String = "res://lab.tscn"
 
 @onready var option_a: Button = $Center/VBox/OptionA
 @onready var option_b: Button = $Center/VBox/OptionB

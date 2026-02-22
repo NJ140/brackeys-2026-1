@@ -1,6 +1,6 @@
 extends Control
 
-@export var next_scene_path: String = "res://ui/game_ui.tscn"
+@export var next_scene_path: String = "res://ui/character_select.tscn"
 @export var fade_in_name: StringName = &"fade_in"
 @export var fade_out_name: StringName = &"fade_out"
 

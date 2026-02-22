@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_sd320")
+song_id = 1
 song = ExtResource("2_pdhwk")
-marker_text_path = "res://music/yellow.txt"
 metadata/_custom_type_script = "uid://c124k25pg7lqv"

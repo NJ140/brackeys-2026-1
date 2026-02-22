@@ -21,7 +21,7 @@ enum Grade{
 @export var hit_windows_sec:Dictionary[HitWindow,float]={
 	HitWindow.Perfect : .05,
 	HitWindow.Good : .08,
-	HitWindow.Early_Late : .12,
+	HitWindow.Early_Late : .20,
 }
 @export var calibration_offset_sec: float = 0.0
 
@@ -42,11 +42,32 @@ var precount_start_time := 0.0
 func _ready() -> void:
 	audio_clock.play()
 
-func begin():
+func reset():
+	audio_clock.play()
+	in_lead_count = false
+	song_playing = false
+
+	last_emitted_beat = -1
+	current_song_time = 0.0
+	current_clock_time = 0.0
+
+	next_marker_index  = 0
+	last_marker_index = -1 
+
+	precount_start_time = 0.0
+
+func begin(song:BattleSong):
+	reset()
+	if song:
+		current_song = song
 	if current_song.song:
+		current_song.markers = BattleSong.UNTITLED if current_song.song_id == BattleSong.SongID.UNTITLED else BattleSong.YELLOW
+		#current_song.markers.sort()
+		
 		current_song.parse_marker_text()
 		start_lead_count()
 		last_marker_index = current_song.markers.size() - 1
+		print(0)
 	else:
 		print("no song")
 	hit_windows = hit_windows_sec.keys()
@@ -80,14 +101,16 @@ func _process(delta: float) -> void:
 				next_marker_index += 1
 			else:
 				break
+	if get_current_song_time() >= current_song.song.get_length():
+		EventBus.rhythm.song_ended.emit()
 func expected_song_pos() -> float:
 	var now_clock := get_clock_time_seconds()
 	var boundary_clock :float= precount_start_time + current_song.lead_time_beat_count * current_song.get_seconds_per_beat()
 	return max(0.0, now_clock - boundary_clock)
 
-func judge_input(_event:InputEvent):
+func judge_input(event:InputEvent):
 	current_song_time = get_current_song_time()
-	if Input.is_action_just_pressed("hit"):
+	if (event is InputEventKey or event is InputEventMouseButton) and event.is_pressed():
 		if not next_marker_index <= last_marker_index: return
 		var next_marker = current_song.markers[next_marker_index] 
 		print(

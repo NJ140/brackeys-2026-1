@@ -1,6 +1,15 @@
 class_name Marker extends Node2D
 
+const SLASH_SIZE = 1.2
+const BLUE_FLAME_SIZE = 0.48
+const EXPLOSION_SIZE = .12
+
 @onready var sprite: AnimatedSprite2D = %Marker
+var animation_size:={
+	&"default":SLASH_SIZE,
+	&"blue_flame":BLUE_FLAME_SIZE,
+	&"explotion":EXPLOSION_SIZE
+}
 
 var rhythm_manager :RhythmMan= GlobalRhythmManager
 var spawn_point:Vector2
@@ -16,6 +25,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	duration = time_to_hit - spawn_time
+	scale = Vector2.ONE * animation_size[sprite.animation] 
 	if is_zero_approx(duration): 
 		u_position = 1
 	else:

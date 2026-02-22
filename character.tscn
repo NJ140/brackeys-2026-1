@@ -113,9 +113,14 @@ animations = [{
 [node name="Character" type="AnimatedSprite2D" unique_id=1687183795]
 texture_filter = 1
 position = Vector2(0, -64)
+<<<<<<< HEAD
 sprite_frames = ExtResource("2_wa5vi")
 animation = &"run"
 autoplay = "idle"
+=======
+sprite_frames = ExtResource("1_wa5vi")
+animation = &"idle"
+>>>>>>> origin/feat-animation
 script = ExtResource("10_jb3kq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=477033575]

@@ -3,6 +3,32 @@
 [ext_resource type="Shader" uid="uid://m3ern0jbf81w" path="res://assets/shaders/2d_outline.gdshader" id="1_670xe"]
 [ext_resource type="Texture2D" uid="uid://cp8yjpm7sw7db" path="res://assets/projectiles/spritesheet.png" id="1_mkov4"]
 [ext_resource type="Script" uid="uid://co4uuf1fs03ek" path="res://scripts/resources/marker.gd" id="2_670xe"]
+[ext_resource type="Texture2D" uid="uid://bsw2nkc2dpyjv" path="res://assets/projectiles/blue_flame/1.png" id="3_m2ou0"]
+[ext_resource type="Texture2D" uid="uid://bn0sf4kafu3ku" path="res://assets/projectiles/blue_flame/2.png" id="4_cwd3u"]
+[ext_resource type="Texture2D" uid="uid://dhnt6ajgclvic" path="res://assets/projectiles/blue_flame/3.png" id="5_n1lup"]
+[ext_resource type="Texture2D" uid="uid://v2kmga1yhcdi" path="res://assets/projectiles/blue_flame/4.png" id="6_jcwxj"]
+[ext_resource type="Texture2D" uid="uid://36qkqtohq0x4" path="res://assets/projectiles/blue_flame/5.png" id="7_g8ymp"]
+[ext_resource type="Texture2D" uid="uid://kr1gal785tki" path="res://assets/projectiles/blue_flame/6.png" id="8_4la16"]
+[ext_resource type="Texture2D" uid="uid://b4cyuolubpiv8" path="res://assets/projectiles/blue_flame/7.png" id="9_cvdkf"]
+[ext_resource type="Texture2D" uid="uid://bh3brwilretml" path="res://assets/projectiles/blue_flame/8.png" id="10_5wqua"]
+[ext_resource type="Texture2D" uid="uid://u1qyjadjor7g" path="res://assets/projectiles/blue_flame/9.png" id="11_trpru"]
+[ext_resource type="Texture2D" uid="uid://coenpfu3po4eq" path="res://assets/projectiles/blue_flame/10.png" id="12_mb14p"]
+[ext_resource type="Texture2D" uid="uid://r1e54lshqp34" path="res://assets/projectiles/explosion/00.png" id="14_3ypu6"]
+[ext_resource type="Texture2D" uid="uid://cc5s6vav1ft1g" path="res://assets/projectiles/explosion/01.png" id="15_j3dqs"]
+[ext_resource type="Texture2D" uid="uid://7frkl5lxo64" path="res://assets/projectiles/explosion/02.png" id="16_v8dpe"]
+[ext_resource type="Texture2D" uid="uid://vrnp2cydbphp" path="res://assets/projectiles/explosion/03.png" id="17_aijgt"]
+[ext_resource type="Texture2D" uid="uid://dfae0xhsfx5i8" path="res://assets/projectiles/explosion/04.png" id="18_0vyld"]
+[ext_resource type="Texture2D" uid="uid://dn1f1ab4nxig2" path="res://assets/projectiles/explosion/05.png" id="19_b1n0c"]
+[ext_resource type="Texture2D" uid="uid://cg502suaehasv" path="res://assets/projectiles/explosion/06.png" id="20_06se3"]
+[ext_resource type="Texture2D" uid="uid://drbmt1tn3ey2b" path="res://assets/projectiles/explosion/07.png" id="21_134fn"]
+[ext_resource type="Texture2D" uid="uid://djvykmpjjo2wj" path="res://assets/projectiles/explosion/08.png" id="22_1fkrd"]
+[ext_resource type="Texture2D" uid="uid://b48s4qjsvadng" path="res://assets/projectiles/explosion/09.png" id="23_pirv3"]
+[ext_resource type="Texture2D" uid="uid://ykncxjx02qqk" path="res://assets/projectiles/explosion/10.png" id="24_12us2"]
+[ext_resource type="Texture2D" uid="uid://bxo4kokffsmx8" path="res://assets/projectiles/explosion/11.png" id="25_igv6h"]
+[ext_resource type="Texture2D" uid="uid://bow1jcrwfrrme" path="res://assets/projectiles/explosion/12.png" id="26_58c6v"]
+[ext_resource type="Texture2D" uid="uid://c7r8c1ebjjyvk" path="res://assets/projectiles/explosion/13.png" id="27_vg2gg"]
+[ext_resource type="Texture2D" uid="uid://cc7rsool06lx3" path="res://assets/projectiles/explosion/14.png" id="28_yn43o"]
+[ext_resource type="Texture2D" uid="uid://bjbivubrh8ray" path="res://assets/projectiles/explosion/15.png" id="29_enawl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2k2uc"]
 shader = ExtResource("1_670xe")
@@ -37,6 +63,41 @@ region = Rect2(481, 0, 95, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_m2ou0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cwd3u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n1lup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jcwxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g8ymp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4la16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cvdkf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5wqua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_trpru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mb14p")
+}],
+"loop": true,
+"name": &"blue_flame",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_670xe")
 }, {
 "duration": 1.0,
@@ -57,6 +118,59 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_3ypu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_j3dqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_v8dpe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_aijgt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_0vyld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_b1n0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_06se3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_134fn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_1fkrd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_pirv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_12us2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_igv6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_58c6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_vg2gg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_yn43o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_enawl")
+}],
+"loop": true,
+"name": &"explosion",
+"speed": 60.0
 }]
 
 [node name="Node2D" type="Node2D" unique_id=1558773863]
@@ -66,8 +180,10 @@ script = ExtResource("2_670xe")
 unique_name_in_owner = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_2k2uc")
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_ndlmc")
-autoplay = "default"
-frame_progress = 0.6645396
+animation = &"explosion"
+autoplay = "explosion"
+frame_progress = 0.11374692
 flip_h = true
 flip_v = true
